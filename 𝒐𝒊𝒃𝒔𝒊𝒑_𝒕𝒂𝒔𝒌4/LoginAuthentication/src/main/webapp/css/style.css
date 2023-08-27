@@ -1,0 +1,22 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+.bg-custom {
+	background: #1f1d1f;
+	font-size: 20px;
+	padding-left: 20px;
+}
+body {
+	background-color: #A9C9FF;
+	background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.c-head{
+	background: rgb(54, 50, 50);
+}
