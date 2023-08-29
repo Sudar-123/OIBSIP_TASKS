@@ -1,27 +1,23 @@
-let input = document.getElementById('inputBox');
-let buttons = document.querySelectorAll('button');
+const display = document.querySelector(".display");
+const buttons = document.querySelectorAll("button");
+const specialChars = ["/", "*", "-", "+", "=", "%"];
+let output = "";
 
-let string = "";
-let arr = Array.from(buttons);
-arr.forEach(button => {
-    button.addEventListener('click', (e) =>{
-        if(e.target.innerHTML == 'ENTER'|| e.target.innerHTML == 'ans'){
-            string = eval(string);
-            input.value = string;
-        }
+const calculate = (btnValue) => {
+    if (btnValue === "=" && output !== "") {
+        output = eval(output.replace("%", "/100"));
+    } else if(btnValue === "AC"){
+        output = "";
+    }else if(btnValue === "DEL") {
+        output = output.toString().slice(0, -1);
+    }else{
+        if (output === "" && specialChars.includes(btnValue)) return;
+        output += btnValue; 
+    }
+    display.value = output;
+};
 
-        else if(e.target.innerHTML == 'AC'){
-            string = "";
-            input.value = string;
-        }
-        else if(e.target.innerHTML == 'del'){
-            string = string.substring(0, string.length-1);
-            input.value = string;
-        }
-        else{
-            string += e.target.innerHTML;
-            input.value = string;
-        }
-        
-    })
-})
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => calculate(e.target.dataset.value));
+});
